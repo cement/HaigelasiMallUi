@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0ae5c4"],{"0a74":function(e,o,t){"use strict";t.r(o);var u=t("b775");o["default"]={save:function(e){return Object(u["default"])({url:"/shop/goods/sku",method:"post",data:e})},remove:function(e){return Object(u["default"])({url:"/shop/goods/sku",method:"delete",params:{id:e}})}}}}]);

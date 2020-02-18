@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21762e"],{c704:function(t,n,e){"use strict";e.r(n);e("7f7f");n["default"]={data:function(){return{activeName:"profile",user:{}}},mounted:function(){this.init()},methods:{init:function(){this.user=this.$store.state.user.profile},handleClick:function(t,n){this.$router.push({path:"/account/"+t.name})}}}}}]);

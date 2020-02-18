@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e5584"],{"93a5":function(t,n,e){"use strict";e.r(n),e.d(n,"getAttrBy",(function(){return r}));var o=e("b775");function r(t){return Object(o["default"])({url:"/shop/attr/val/getAttrByCategoryAndGoods/"+t,method:"get"})}}}]);

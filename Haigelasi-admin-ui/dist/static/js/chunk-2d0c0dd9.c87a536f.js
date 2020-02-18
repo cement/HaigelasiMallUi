@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c0dd9"],{4436:function(t,n,e){"use strict";e.r(n),e.d(n,"getList",(function(){return o})),e.d(n,"clear",(function(){return r}));var u=e("b775");function o(t){return Object(u["default"])({url:"/loginLog/list",method:"get",params:t})}function r(){return Object(u["default"])({url:"/loginLog",method:"delete"})}}}]);

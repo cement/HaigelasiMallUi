@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d20f688"],{b400:function(n,o,t){n.exports=t.p+"static/fonts/element-icons.27c72091.ttf"}}]);
