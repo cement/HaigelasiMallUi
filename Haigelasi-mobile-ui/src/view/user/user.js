@@ -1,5 +1,6 @@
 import userApi from '@/api/user'
-import {Cell, CellGroup, Col, Icon, Row, Tabbar, TabbarItem, Toast} from 'vant';
+import store from '@/store'
+import {Cell, CellGroup, Col, Icon, Row, Image,Tabbar, TabbarItem, Toast} from 'vant';
 
 export default {
     components: {
@@ -7,6 +8,7 @@ export default {
         [Col.name]: Col,
         [Icon.name]: Icon,
         [Cell.name]: Cell,
+        [Image.name]: Image,
         [CellGroup.name]: CellGroup,
         [Tabbar.name]: Tabbar,
         [TabbarItem.name]: TabbarItem,
@@ -14,7 +16,8 @@ export default {
     },
     data() {
         return {
-            activeFooter: 3
+            activeFooter: 3,
+            avatarUrl:''
         }
     },
     mounted() {
@@ -22,6 +25,18 @@ export default {
     },
     methods: {
         init() {
+            let user = store.state.app.user
+            console.log(user)
+            if (user.avatar) {
+                if(user.avatar.startsWith('http')){
+
+                    this.avatarUrl =  user.avatar
+                }else{
+                    this.avatarUrl = baseApi + '/file/getImgStream?idFile=' + this.user.avatar
+
+                }
+            }
+
             userApi.getUserInfo().then(response => {
 
             }).catch((err) => {

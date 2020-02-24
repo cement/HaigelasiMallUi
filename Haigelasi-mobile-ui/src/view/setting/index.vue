@@ -11,17 +11,18 @@
                         round
                         width="30"
                         height="30"
-                        :src="avatarUrl"
+                        :src="user.avatar"
                 />
             </van-cell>
             <van-cell icon="user-o" title="姓名" :value="user.nickName"is-link to="updateUserName"/>
             <van-cell icon="share" title="性别" is-link :value="user.genderStr" @click="showGender=true"/>
             <van-cell icon="closed-eye" title="修改密码" is-link to="updatePwd"/>
             <van-cell icon="phone-o" title="更换手机" is-link to="updateMobile"/>
-            <van-cell icon="warning-o" title="关于本公司" is-link url="http://hagelasi.com"/>
+            <van-cell icon="warning-o" title="关于本公司" is-link url="http://haigelasi.com"/>
         </van-cell-group>
         <div class="logout">
-        <van-button type="danger" plain round block @click="onLogout">退出登录</van-button>
+            <van-button type="danger" plain round block @click="onLogout">退出登录</van-button>
+            <van-button type="danger" plain round block @click="onGomll">返回首页</van-button>
         </div>
         <van-popup v-model="showGender"  :style="{ padding:'20px',width:'50px', height: '50px' }">
             <van-radio-group v-model="user.gender" @change="onChangeGender">

@@ -72,7 +72,7 @@ const routes = [
         name: 'setting',
         component: () => import('./view/setting'),
         meta: {
-            requireAuth: true,
+            requireAuth: false,
             title: '设置'
         }
     },
@@ -121,7 +121,7 @@ const routes = [
         component: () => import('./view/order/detail'),
         meta: {
             requireAuth: true,
-            title: '我的订单'
+            title: '订单详情'
         }
     },
     {
@@ -144,6 +144,7 @@ const routes = [
         name: 'address',
         component: () => import('./view/address'),
         meta: {
+            requireAuth: true,
             title: '收货地址'
         }
     },
@@ -151,6 +152,7 @@ const routes = [
         name: 'address/edit',
         component: () => import('./view/address/edit'),
         meta: {
+            requireAuth: true,
             title: '新增收货地址'
         }
     },
@@ -158,7 +160,7 @@ const routes = [
         name: 'cart',
         component: () => import('./view/cart'),
         meta: {
-            // requireAuth: true,
+            requireAuth: true,
             title: '购物车'
         }
     }

@@ -218,6 +218,9 @@ export default {
         toTopic(id) {
             this.$router.push({path: '/topic/'+id})
           // Toast('敬请期待')
+        },
+        showGoodsList(){
+            console.log("===showGoodsList===");
         }
 
     }

@@ -1,6 +1,17 @@
 <template>
   <div>
-    <img class="user-poster" src="@/assets/img/banner.jpg" >
+    <!--<img class="user-poster" src="@/assets/img/banner.jpg" >-->
+    <!--<img class="user-poster" src="avatarUrl" >-->
+      <div align="center">
+
+        <van-image
+                round
+                width="120"
+                height="120"
+                margin="20"
+                :src="avatarUrl"
+        />
+      </div>
     <van-row class="user-links">
       <van-col span="6">
         <van-icon name="pending-payment" @click="toOrder(1)"/>

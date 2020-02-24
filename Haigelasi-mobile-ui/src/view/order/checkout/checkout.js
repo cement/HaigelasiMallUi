@@ -62,9 +62,15 @@ export default {
             })
         },
         submit() {
+            if(!this.addr){
+                Toast("请设置收货地址！")
+                this.$router.push("/address")
+                return
+            }
             order.save({idAddress:this.addr.id,message:this.message}).then( response => {
                 let order = response.data
-                this.$router.push({path:'payment',query:{orderNo:order.orderSn,totalPrice:order.totalPrice}})
+                console.log(order)
+                this.$router.push({path:'payment',query:{orderSn:order.orderSn,totalPrice:order.totalPrice}})
             })
         },
         formatPrice(price) {

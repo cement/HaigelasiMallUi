@@ -13,28 +13,31 @@ module.exports = {
   publicPath: '/ui/mobile/',
   lintOnSave: false,
   productionSourceMap: false,
-  // devServer: {
-  //   port: port,
-  //   open: true,
-  //   overlay: {
-  //     warnings: false,
-  //     errors: true
-  //   },
-  //   proxy: {
-  //     [process.env.VUE_APP_BASE_API]: {
-  //
-  //       target:`http://localhost:8081`,//不使用mock模拟数据直接请求api服务
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         ['^' + process.env.VUE_APP_BASE_API]: ''
-  //       }
-  //     }
-  //   }
-  //   // after: require('./mock/mock-server.js')
-  // },
+  devServer: {
+      sockHost: '192.168.1.110',
+      disableHostCheck: true,
+    port: 80,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      [process.env.VUE_APP_BASE_API]: {
+
+        target:`http://localhost:8081`,//不使用mock模拟数据直接请求api服务
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    }
+    // after: require('./mock/mock-server.js')
+  },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
+    // it can be accessed in index.html to inject the correct title.\
+
     name: name,
     resolve: {
       alias: {

@@ -22,8 +22,17 @@ export default {
     })
   },
     wxLogin:function() {
+
         return request({
             url: '/wxLogin/login',
+            method: 'get'
+
+        })
+    },
+    wxAuth:function(url) {
+
+        return request({
+            url: url,
             method: 'get'
 
         })

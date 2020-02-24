@@ -26,7 +26,13 @@ export default {
         init() {
             this.user = store.state.app.user
             if (this.user.avatar) {
-                this.avatarUrl = baseApi + '/file/getImgStream?idFile=' + this.user.avatar
+                if(this.user.avatar.startsWith('http')){
+
+                   this.avatarUrl =  this.user.avatar
+                }else{
+                   this.avatarUrl = baseApi + '/file/getImgStream?idFile=' + this.user.avatar
+
+                }
             }
         },
         onClickLeft() {

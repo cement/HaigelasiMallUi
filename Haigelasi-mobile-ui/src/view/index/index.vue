@@ -44,6 +44,9 @@
                     <a :href="image.url"><img v-lazy="image.path" style="width:100%;"/></a>
                 </van-swipe-item>
             </van-swipe>
+            <van-cell-group class="goods-cell-group" >
+                <van-cell title="查看商品" is-link @click="showGoodsList"/>
+            </van-cell-group>
             <van-list
                     v-model="loading"
                     :finished="finished"
@@ -96,6 +99,17 @@
 
         .van-card {
             background-color: #ffffff;
+        }
+
+        .goods {
+            padding-bottom: 50px;
+            &-cell-group {
+                margin: 15px 0;
+
+                .van-cell__value {
+                    color: #999;
+                }
+            }
         }
     }
 </style>

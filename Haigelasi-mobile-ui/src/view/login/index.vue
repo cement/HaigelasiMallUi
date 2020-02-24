@@ -1,7 +1,10 @@
 <template>
     <div>
         <img class="user-poster" src="@/assets/img/banner.jpg" >
-
+        <van-popup v-model="popupShow">
+            <van-loading size="64px" type="spinner" color="#1989fa">登录中...</van-loading>
+        </van-popup>
+        <!--<van-loading type="spinner" color="#1989fa">登录中...</van-loading>-->
         <div class="input-group">
             <van-cell-group>
             <van-field
@@ -45,6 +48,7 @@
 
             <van-button type="info" size="large"  v-show="false" round   @click="toRegister">手机短信登录/注册</van-button>
             <van-button type="primary" size="large"  v-show="show2" round  @click="wxLogin">微信登录</van-button>
+
 
             </div>
         <van-tabbar v-model="activeFooter">

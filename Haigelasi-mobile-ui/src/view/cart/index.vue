@@ -41,7 +41,7 @@
     <div class="no-data" v-if="!isLogin" >
       <p style="text-align: center;color:lightgray">
         <van-icon name="cart-o" style="text-align: center" size="3rem"/><br>
-        还没有登录</p>
+        您还没有登录</p>
       <van-button type="primary" block round @click="toLogin">立即登录</van-button>
     </div>
 

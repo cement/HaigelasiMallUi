@@ -1,11 +1,11 @@
 <template>
     <div>
-            <van-tabs v-model="activeNav" @click="onClickNav">
-                <!--<van-tab title="推荐" name="0" >-->
-                <!--</van-tab>-->
-                <van-tab v-for="nav in navList" :title="nav.name" :name="nav.id">
-                </van-tab>
-            </van-tabs>
+        <van-tabs v-model="activeNav" @click="onClickNav">
+            <!--<van-tab title="推荐" name="0" >-->
+            <!--</van-tab>-->
+            <van-tab v-for="nav in navList" :title="nav.name" :name="nav.id">
+            </van-tab>
+        </van-tabs>
 
         <van-swipe :autoplay="3000" style="height: 200px;">
             <van-swipe-item v-for="(image, index) in banners" :key="index" @click="clickSwipe">
@@ -17,7 +17,6 @@
                 :finished="finished"
                 @load="loadMore"
         >
-        </van-list>
         <van-card v-for="(goods,index) in goodsList" :key="index"
                   :num="goods.stock"
                   :price="formatPrice(goods.price)"
@@ -27,6 +26,7 @@
                   :thumb-link="goods.link"
                   @click="viewGoodsDetail(goods.id)"
         />
+        </van-list>
         <br><br><br><br>
 
         <van-tabbar v-model="activeFooter">
@@ -64,4 +64,5 @@
             }
         }
     }
+
 </style>

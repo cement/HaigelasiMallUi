@@ -4,8 +4,8 @@ import store from '@/store'
 import storage  from '@/utils/storage'
 // create an axios instance
 const service = axios.create({
-  // baseURL: 'http://139.129.117.238/api/mobile/', // url = base url + request url
-  baseURL: process.env.VUE_APP_HOST + process.env.VUE_APP_BASE_API, // url = base url + request url
+  // baseURL: 'http://cement.imwork.net', // url = base url + request url
+  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'

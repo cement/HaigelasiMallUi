@@ -7,6 +7,13 @@ export default {
             method: 'get'
         })
     },
+    getWxuser: function (id) {
+        return request({
+            url: '/wxLogin/getWxuser/'+id,
+            method: 'get'
+        })
+    },
+
     updateUserName: function (userName) {
         return request({
             url: '/user/updateUserName/' + userName,

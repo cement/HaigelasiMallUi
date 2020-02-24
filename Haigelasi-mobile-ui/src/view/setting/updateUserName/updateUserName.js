@@ -32,6 +32,8 @@ export default {
                 return
             }
             userApi.updateUserName(this.userName).then( response => {
+                console.log("+++++++++++++++++++++++++")
+                console.log(response.data)
                 store.dispatch('app/toggleUser', response.data)
                 this.$router.go(-1)
             })

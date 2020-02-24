@@ -42,7 +42,11 @@ export default {
     methods: {
         init(){
             const user = store.state.app.user
-            this.isLogin = user.nickName
+            console.log("======cart=====")
+            console.log(user.keys)
+            // this.isLogin = user.nickName||user.id
+            this.isLogin = user
+
             if(this.isLogin) {
                 cart.queryByUser().then(response => {
                     let cartList = response.data

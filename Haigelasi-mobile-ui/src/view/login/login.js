@@ -1,7 +1,7 @@
 import loginApi from '@/api/login'
 import store from '@/store'
 import { Row, Col, Icon, Cell, CellGroup,Field,Button,Toast,
-    Tabbar,
+    Tabbar,Popup,Loading,
     TabbarItem,Dialog} from 'vant';
 
 export default {
@@ -16,7 +16,10 @@ export default {
         [Field.name]: Field,
         [Button.name]: Button,
         [Toast.name]: Toast,
-        [Dialog.name]: Dialog
+        [Dialog.name]: Dialog,
+        [Popup.name]: Popup,
+        [Loading .name]: Loading
+
     },
     data() {
         return {
@@ -28,11 +31,14 @@ export default {
             show2:true,
             redirect:'',
             hasSendSms: false,
-            second: 60
+            second: 60,
+            wxauthurl:'',
+            popupShow:false
         }
     },
     mounted(){
       this.init()
+        // this.wxLogin()
     },
     methods:{
         init(){
@@ -54,16 +60,28 @@ export default {
             this.show1 = true;
         },
         wxLogin(){
-            loginApi.wxLogin().then(response=>{
-                 console.log(response);
-                 let wxuser = response.wxuser;
-                 Toast.success("欢迎 "+wxuser.nickname+" 来到海格拉斯养生小店！");
-                 store.dispatch('app/wxUser',wxuser);
-                 this.$router.push({path: '/index'});
-            }).catch(error=>{
-                console.log(error);
-                Toast.fail(error);
-            });
+            this.popupShow = true;
+            window.location.href= process.env.VUE_APP_WXLOGIN_URL;
+            // window.open('http://cement.imwork.net/wxLogin/login');
+            // this.$router.push({path: '/user'})
+            // loginApi.wxLogin().then(response=>{
+            //      console.log("==================");
+            //      console.log(response);
+            //      this.wxauthurl = response.redirectUrl;
+            //
+            //
+            //      // loginApi.wxAuth(response.redirectUrl).then(res=>{
+            //      //     console.log(res);
+            //      // })
+            //       // window.location.href=response.redirectUrl;
+            //      // let wxuser = response.wxuser;
+            //      // Toast.success("欢迎 "+wxuser.nickname+" 来到海格拉斯养生小店！");
+            //      // store.dispatch('app/wxUser',wxuser);
+            //      // this.$router.push({path: '/index'});
+            // }).catch(error=>{
+            //     console.log(error);
+            //     Toast.fail(error);
+            // });
         },
         loginOrRegister(){
             loginApi.loginOrReg(this.mobile,this.smsCode).then( response=> {

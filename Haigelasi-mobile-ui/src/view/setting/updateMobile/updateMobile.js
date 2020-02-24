@@ -43,7 +43,7 @@ export default {
             userApi.sendSmsCode(this.oldMobile).then( response => {
                 this.setTimeOut()
                 const smsCode = response.data
-                Toast('提示：测试阶段不发送短信验证码：'+smsCode)
+                Toast('提示：本阶段暂时不发送短信验证码：'+smsCode)
             })
 
         },
