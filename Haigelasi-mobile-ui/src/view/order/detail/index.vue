@@ -6,16 +6,29 @@
                 @click-left="onClickLeft"
         />
         <div class="order_detail">
-            <van-panel :title="order.address.name +' '+  order.address.tel" :status="order.statusName">
-                <div class="address_detail">
-                    {{order.address.province}}{{order.address.city}}{{order.address.district}}{{order.address.addressDetail}}
-                    <br>
-                </div>
-                <div slot="footer"
-                     class="footer_btn">
+            <van-panel :title="title" :status="'状态：'+order.statusName">
+                <van-cell-group>
+                    <van-cell :title="order.address.province+order.address.city+order.address.district"
+                              :label="order.address.addressDetail"/>
+                    <van-contact-card
+                            type="edit"
+                            :name=order.address.name
+                            :tel=order.address.tel
+                            :editable="false"
+                    />
+                </van-cell-group>
+<!--                <div class="address_detail">-->
+<!--                    {{order.address.province}} {{order.address.city}} {{order.address.district}}-->
+<!--                    {{order.address.addressDetail}}-->
+<!--                    <br>-->
+<!--                </div>-->
+                <div slot="footer" class="footer_btn">
                     <van-button size="small" type="default" @click="contact">联系客服</van-button>
-                    <van-button size="small" type="danger" @click="payment" v-show="order.statusName=='待付款'">立即付款</van-button>
-                    <van-button size="small" type="danger" @click="confirmReceive" v-show="order.statusName=='已发货'">确认收货</van-button>
+                    <van-button size="small" type="danger" @click="payment" v-show="order.statusName=='待付款'">立即付款
+                    </van-button>
+                    <van-button size="small" type="danger" @click="confirmReceive" v-show="order.statusName=='已发货'">
+                        确认收货
+                    </van-button>
                 </div>
             </van-panel>
             <van-panel :title="'订单编号: ' + order.orderSn">
@@ -25,17 +38,17 @@
                           :desc="orderItem.goods.descript"
                           :price="formatPrice(orderItem.price)"
                           :num="orderItem.count"
-                          @click="toGoods(orderItem.goods.id)"
                           :thumb="imgUrl+orderItem.goods.pic">
+                    @click="toGoods(orderItem.goods.id)"
 
                 </van-card>
                 <div class="total">合计: {{formatPrice(order.totalPrice)}}</div>
 
             </van-panel>
-            <van-panel title="订单信息" >
+            <van-panel title="订单信息">
                 <van-cell-group>
-                    <van-cell title="订单编号" :value="order.orderSn" />
-                    <van-cell title="备注" :value="order.message"   />
+                    <van-cell title="订单编号" :value="order.orderSn"/>
+                    <van-cell title="备注" :value="order.message"/>
                     <van-cell title="创建时间" :value="order.createTime"/>
                 </van-cell-group>
             </van-panel>
@@ -76,7 +89,8 @@
                 margin-left: 10px;
             }
         }
-        .address_detail{
+
+        .address_detail {
             padding: 5px;
         }
     }

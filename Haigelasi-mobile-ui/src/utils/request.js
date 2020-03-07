@@ -32,23 +32,14 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
   /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
+   * If you want to get http information such as headers or status,Please return  response => response
   */
-
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
   response => {
-    console.log('response',response)
     if(response.headers.token){
       //如果后台通过header返回token，说明token已经更新，则更新客户端本地token
       store.dispatch('app/toggleToken',response.headers.token)
     }
     const res = response.data;
-    console.log(res.code);
     if (res.code == 10000){
        return response;
     }

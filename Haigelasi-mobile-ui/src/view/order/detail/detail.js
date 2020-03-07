@@ -1,5 +1,5 @@
 import order  from '@/api/orders'
-import { Cell, CellGroup,Row, Col,Checkbox, CheckboxGroup, Card, SubmitBar, Toast, NavBar, Tab,Tabs,Tabbar, TabbarItem,Panel,List,Button    } from 'vant';
+import { Cell, CellGroup,Row, Col,Checkbox, CheckboxGroup, Card, SubmitBar, Toast, NavBar, Tab,Tabs,Tabbar, TabbarItem,Panel,List,Button,ContactCard, ContactList, ContactEdit  } from 'vant';
 const baseApi = process.env.VUE_APP_BASE_API
 
 export default {
@@ -19,14 +19,16 @@ export default {
         [TabbarItem.name]: TabbarItem,
         [Panel.name]: Panel,
         [List.name]:List,
-        [Button.name]:Button
-
+        [Button.name]:Button,
+        [ContactCard.name]:ContactCard,
+        [ContactList.name]:ContactList,
+        [ContactEdit.name]:ContactEdit
     },
 
     data() {
         return {
             activeFooter: 3,
-            title:'',
+            title:'收货地址',
             imgUrl:baseApi+'/file/getImgStream?idFile=',
             order:{orderSn:'',address:{name:''}}
         };

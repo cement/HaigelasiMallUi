@@ -42,8 +42,8 @@ export default {
     prepareCheckout: function (params) {
         return request({
             url: '/user/order/prepareCheckout',
-            params,
-            method: 'get'
+            method: 'get',
+            params
         })
     },
     /**

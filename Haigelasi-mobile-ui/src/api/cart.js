@@ -20,9 +20,15 @@ export default {
             data:params
         })
     },
-    update:function(id,count){
+    updateCount:function(id,count){
         return request({
-            url: '/user/cart/update/'+id+'/'+count,
+            url: '/user/cart/updateCount/'+id+'/'+count,
+            method: 'POST',
+        })
+    },
+    updateStatus:function(id,status){
+        return request({
+            url: '/user/cart/updateStatus/'+id+'/'+status,
             method: 'POST',
         })
     }

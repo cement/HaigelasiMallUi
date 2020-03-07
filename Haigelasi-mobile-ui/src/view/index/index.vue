@@ -45,7 +45,7 @@
                 </van-swipe-item>
             </van-swipe>
             <van-cell-group class="goods-cell-group" >
-                <van-cell title="查看商品" is-link @click="showGoodsList"/>
+                <van-cell title="商品列表" is-link @click="showGoodsList"/>
             </van-cell-group>
             <van-list
                     v-model="loading"

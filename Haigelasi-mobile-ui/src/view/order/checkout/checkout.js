@@ -1,5 +1,5 @@
 import order  from '@/api/orders'
-import {Card, Cell, CellGroup, Checkbox, CheckboxGroup, NavBar, SubmitBar, Tabbar, TabbarItem, Toast} from 'vant';
+import {Card, Cell, CellGroup, Checkbox, CheckboxGroup, NavBar, SubmitBar, Tabbar, TabbarItem,Icon,Toast} from 'vant';
 import storage from '@/utils/storage'
 const baseApi = process.env.VUE_APP_BASE_API
 export default {
@@ -12,18 +12,20 @@ export default {
         [Tabbar.name]: Tabbar,
         [TabbarItem.name]: TabbarItem,
         [Cell.name]: Cell,
-        [CellGroup.name]: CellGroup
+        [CellGroup.name]: CellGroup,
+        [Icon.name]: Icon
     },
 
     data() {
         return {
+            title:document.title,
             activeFooter: 2,
             checkedGoods: [],
             checkeAllCarts: [],
             cartList: [],
             checkedAll: true,
             addr: undefined,
-            message:''
+            message:'Hegelasi-海参'
         };
     },
     mounted() {
@@ -42,15 +44,18 @@ export default {
             return '提交订单' + (count ? `(${count})` : '')
         },
         totalPrice() {
-            return this.cartList.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? (parseFloat(item.goods.price) * item.count) : 0), 0)
+            // return this.cartList.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? (parseFloat(item.goods.price) * item.count) : 0), 0)
+            return this.cartList.reduce((total, item) => total + (item.status ? (parseFloat(item.price) * item.count) : 0), 0)
         }
     },
+
 
     methods: {
         init() {
             const chosenAddressId = storage.get('chosenAddressId')
             order.prepareCheckout({chosenAddressId:chosenAddressId}).then(response => {
                 let cartList = response.data.list
+                console.log(cartList)
                 this.addr = response.data.addr
                 for (let index in cartList) {
                     cartList[index].thumb = baseApi+ '/file/getImgStream?idFile=' + cartList[index].goods.pic
@@ -60,6 +65,9 @@ export default {
             }).catch((err) => {
                 Toast(err)
             })
+        },
+        onClickLeft(){
+            this.$router.go(-1);
         },
         submit() {
             if(!this.addr){
@@ -88,8 +96,14 @@ export default {
                 this.checkedGoods = this.checkeAllCarts
             }
         },
+        gotoCart(){
+            this.$router.push("/cart")
+        },
         chooseAddress(){
 
+        },
+        itemClick(item){
+            this.$router.push("/goods/"+item.goods.id)
         }
     }
 };

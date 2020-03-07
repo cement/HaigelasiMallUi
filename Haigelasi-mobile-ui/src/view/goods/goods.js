@@ -2,6 +2,7 @@ import goods from '@/api/goods'
 import cart from '@/api/cart'
 import favorite from '@/api/favorite'
 import store from '@/store'
+import storage from '@/utils/storage'
 
 import {
     Cell,
@@ -43,9 +44,10 @@ export default {
 
     data() {
         return {
+            user:{},
             ifLike:false,
             likeColor:'black',
-            cartCount:'',
+            cartCount: 0,
             showSku:false,
             sku: {
                 tree: [
@@ -61,6 +63,7 @@ export default {
             },
             offline:false,
             goods: {
+                id:'',
                 name: '',
                 price: 0,
                 express: '免运费',
@@ -70,7 +73,6 @@ export default {
         };
     },
     created() {
-        console.log('init')
         this.init()
     },
     computed: {
@@ -78,6 +80,7 @@ export default {
     },
     methods: {
         init() {
+            this.user = store.state.app.user
             let id = this.$route.params.id
             goods.getGoods(id).then(response => {
                 let goods = response.data.goods
@@ -94,7 +97,6 @@ export default {
                 this.goods = goods;
 
                 const user = store.state.app.user
-                console.log('user',user)
                 if(user.nickName) {
                     //获取当前用户购物车商品数量
                     cart.count().then(response => {
@@ -122,16 +124,25 @@ export default {
         },
 
         goToCart() {
-            this.$router.push('/cart');
+            if (this.user.mobile){
+                this.$router.push('/cart');
+            }else{
+                this.$router.push('/login');
+            }
         },
         addCart() {
-            this.showSku = true
+            if (this.user.mobile){
+              this.showSku = true
+            }else{
+              this.$router.push('/login');
+            }
         },
         buy() {
             this.showSku = true
         },
         sorry() {
-            Toast('敬请期待')
+            // Toast('敬请期待')
+
         },
         like() {
             if(this.ifLike === false) {
@@ -145,18 +156,17 @@ export default {
         onBuyClicked(skuData) {
             let cartData = {idGoods:skuData.goodsId,idSku:this.sku.none_sku?'':skuData.selectedSkuComb.id,count:skuData.selectedNum}
             cart.add(cartData).then( response => {
-                this.$router.push('/cart');
                 this.showSku = false
+                this.$router.push('/cart');
             })
         },
         onAddCartClicked(skuData) {
             let cartData = {idGoods:skuData.goodsId,idSku:this.sku.none_sku?'':skuData.selectedSkuComb.id,count:skuData.selectedNum}
             cart.add(cartData).then( response => {
-                console.log(response)
-                Toast.success('已加入到购物车')
                 this.showSku = false
-                this.cartCount += response.data
-            })
+                this.cartCount = Number(this.cartCount)+Number(response.data)
+                Toast.success('已加入到购物车')
+             })
 
         }
     }

@@ -71,7 +71,6 @@ export default {
         }
     },
     created(){
-        console.log('===created===')
         this.onCreate();
 
     },
@@ -80,8 +79,6 @@ export default {
     },
     mounted() {
          this.init()
-        console.log('===mounted===');
-
     },
     computed: {
     },
@@ -110,8 +107,6 @@ export default {
                 this.queryTopic();
                 this.queryRecom();
             }else{
-                // console.log("+++++++++++++");
-                 console.log(this.navList);
                 let idCategory = this.navList[this.activeNav].id;
                 this.getBanners(idCategory);
                 this.getGoodslist(idCategory);
@@ -149,7 +144,6 @@ export default {
                     item.img = baseApi+'/file/getImgStream?idFile=' + item.article.img
                 }
                 this.topicList = list
-                console.log('topicList',this.topicList)
             })
         },
 
@@ -220,7 +214,7 @@ export default {
           // Toast('敬请期待')
         },
         showGoodsList(){
-            console.log("===showGoodsList===");
+            // console.log("===showGoodsList===");
         }
 
     }

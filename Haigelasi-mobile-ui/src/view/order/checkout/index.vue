@@ -1,5 +1,10 @@
 <template>
     <div>
+        <van-nav-bar
+                :title="title"
+                left-arrow
+                @click-left="onClickLeft"
+        />
         <van-cell-group>
         <van-cell :title="addrText" is-link to="address"/>
         </van-cell-group>
@@ -12,6 +17,7 @@
                         :num="item.count"
                         :price="formatPrice(item.price)"
                         :thumb="item.thumb"
+                        @click="itemClick(item)"
                 >
                 </van-card>
             </div>
@@ -22,7 +28,8 @@
                 :button-text="submitBarText"
                 @submit="submit"
         >
-
+<!--            <van-icon name="arrow-left" @click="gotoCart" >再想想</van-icon>-->
+<!--            <van-checkbox v-model="checkedAll" @click="toggleAll" style="padding: 0 10px;">全选</van-checkbox>-->
         </van-submit-bar>
 
         <van-tabbar v-model="activeFooter">

@@ -1,6 +1,6 @@
 import loginApi from '@/api/login'
 import store from '@/store'
-import { Row, Col, Icon, Cell, CellGroup,Field,Button,Toast,
+import { Row, Col, Icon, Cell, CellGroup,Field,Button,Toast,Image,
     Tabbar,Popup,Loading,
     TabbarItem,Dialog} from 'vant';
 
@@ -18,6 +18,7 @@ export default {
         [Toast.name]: Toast,
         [Dialog.name]: Dialog,
         [Popup.name]: Popup,
+        [Image.name]: Image,
         [Loading .name]: Loading
 
     },
@@ -61,7 +62,7 @@ export default {
         },
         wxLogin(){
             this.popupShow = true;
-            window.location.href= process.env.VUE_APP_WXLOGIN_URL;
+            window.location.href= process.env.VUE_APP_WXLOGIN_URL+'/wxLogin/login';
             // window.open('http://cement.imwork.net/wxLogin/login');
             // this.$router.push({path: '/user'})
             // loginApi.wxLogin().then(response=>{

@@ -25,7 +25,6 @@ const mutations = {
     TOGGLE_TOKEN: (state, token) => {
         state.token = token
         storage.setToken(token)
-
     }
 }
 

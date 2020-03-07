@@ -4,9 +4,7 @@ const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-// const port = 8080 // dev port
-const port = 8181 // dev port
-const name = 'Haigelasi'
+const name = 'HaigelasiMall'
 module.exports = {
   outputDir: 'dist',
   // publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
@@ -14,9 +12,9 @@ module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
-      sockHost: '192.168.1.110',
-      disableHostCheck: true,
-    port: 80,
+    sockHost: '192.168.0.100',
+    disableHostCheck: false,
+    port: 81,
     open: true,
     overlay: {
       warnings: false,
@@ -48,7 +46,6 @@ module.exports = {
   chainWebpack(config) {
     config.plugins.delete('preload')
     config.plugins.delete('prefetch')
-
     // set svg-sprite-loader
     config.module
         .rule('svg')

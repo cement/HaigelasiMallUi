@@ -9,6 +9,7 @@ export default {
     },
     getWxuser: function (id) {
         return request({
+            // url: '/wxLogin/getWxuser/'+id,
             url: '/wxLogin/getWxuser/'+id,
             method: 'get'
         })

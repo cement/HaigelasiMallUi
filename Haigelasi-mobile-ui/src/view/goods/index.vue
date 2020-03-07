@@ -28,8 +28,8 @@
         <!--s-->
         <!--</van-cell-group>-->
 
-        <van-cell-group class="goods-cell-group" >
-            <van-cell title="查看商品评论" is-link @click="sorry"/>
+        <van-cell-group id="goods-detail-scroll" class="goods-cell-group" >
+            <van-cell title="查看商品详情" is-link @click="sorry"/>
         </van-cell-group>
         <van-cell-group class="goods-cell-group">
             <p class="goods-detail" v-html="goods.detail"></p>
@@ -48,7 +48,7 @@
                 :hide-stock="sku.hide_stock"
                 @buy-clicked="onBuyClicked"
                 @add-cart="onAddCartClicked"
-        />
+         />
     </div>
 
     <div class="offline" v-else>

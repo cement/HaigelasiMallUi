@@ -123,6 +123,9 @@ export default {
                     this.getData()
                 })
             }
+        },
+        onClickDetail(){
+
         }
     }
 }
